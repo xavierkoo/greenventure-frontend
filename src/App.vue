@@ -1,5 +1,6 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import TopNav from './components/TopNav.vue'
 </script>
 
 <template>
@@ -13,25 +14,26 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 
-    <!-- * Navigation Bar -->
-    <div class="row g-0">
-      <div class="col-sm-1 col-xxl-1" />
-      <div class="col-sm-10 col-xxl-10">
-        <TopNav />
-      </div>
-      <div class="col-sm-1 col-xxl-1" />
-    </div>
-
-    <!-- !TODO - Remove before moving to PRODUCTION -->
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      &nbsp;
-      <RouterLink to="#">Test</RouterLink>
-      &nbsp;
-    </nav>
   </header>
 
-  <RouterView />
+  <!--TODO- Remove before going to production:  Development Navigation -->
+  <nav>
+    <RouterLink to="/">Home</RouterLink>
+    &nbsp;
+    <RouterLink to="#">Test</RouterLink>
+    &nbsp;
+  </nav>
+
+  <!-- * Body Grid -->
+  <div class="row g-2 px-0">
+    <div class="d-none d-sm-block col-sm-1 col-xxl-1" style="background-color: #142442" />
+    <div class="col col-sm col-lg col-xl col-xxl" style="min-height: 100vh">
+      <!-- * Navigation Bar -->
+      <TopNav />
+      <RouterView />
+    </div>
+    <div class="d-none d-sm-block col-sm-1 col-xxl-1" style="background-color: #142442" />
+  </div>
 </template>
 
 <style scoped>
