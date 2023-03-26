@@ -13,14 +13,13 @@ import TopNav from './components/TopNav.vue'
     />
 
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
   </header>
 
   <!--TODO- Remove before going to production:  Development Navigation -->
   <nav>
     <RouterLink to="/">Home</RouterLink>
     &nbsp;
-    <RouterLink to="#">Test</RouterLink>
+    <RouterLink to="login">Login</RouterLink>
     &nbsp;
   </nav>
 
@@ -28,7 +27,6 @@ import TopNav from './components/TopNav.vue'
   <div class="row g-2 px-0">
     <div class="d-none d-sm-block col-sm-1 col-xxl-1" style="background-color: #142442" />
     <div class="col col-sm col-lg col-xl col-xxl" style="min-height: 100vh">
-      <!-- * Navigation Bar -->
       <TopNav />
       <RouterView />
     </div>
