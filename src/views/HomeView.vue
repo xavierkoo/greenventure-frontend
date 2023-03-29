@@ -34,15 +34,20 @@
           <h5>{{ item.missionID }}</h5>
         </h4>
         <p class="card-text">{{ item.description }}</p>
-        <div class="text-end">
-          <button
-            type="button"
-            class="btn primary-btn"
-            data-bs-toggle="button"
-            aria-pressed="false"
-          >
+        <div v-if="showInProgress == false" class="text-end">
+          <button type="button" class="btn primary-btn" @click="acceptMission(item.missionID)">
             <div>Accept</div>
           </button>
+        </div>
+        <div v-else class="">
+          <form @submit.prevent="handleSubmit(item.missionID)">
+            <div class="row justify-content-center align-items-center g-0">
+              <div class="col-8"><input :id="item.missionID" type="text" name="" /></div>
+              <div class="col-4 text-end">
+                <input type="submit" value="Verify" class="btn primary-btn" />
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     </div>
@@ -80,6 +85,40 @@ export default {
         const response = await axios.get('http://127.0.0.1:5201/in_progress_mission/2')
         this.allMissions = response.data.data.missions
       }
+    },
+    async handleSubmit(missionID) {
+      // const userID = localStorage.getItem('userID')
+      const inputVal = document.getElementById(missionID).value
+      const params = {
+        missionID: inputVal,
+        userID: 2,
+        verification_code: '528819'
+      }
+      const response = await axios
+        .post('http://127.0.0.1:5201/complete_mission', params)
+        .then(() => {
+          console.log('This is completed!')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+
+      this.allMissions = response.data.data.missions
+    },
+    async acceptMission(missionID) {
+      // const userID = localStorage.getItem('userID')
+      const params = {
+        missionID: missionID,
+        userID: 2
+      }
+      const response = await axios
+        .post('http://127.0.0.1:5201/accept_mission', params)
+        .then(() => {
+          console.log('This is completed!')
+        })
+        .catch((err) => {
+          console.error(err)
+        })
     }
   }
 }
