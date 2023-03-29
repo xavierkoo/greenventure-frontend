@@ -57,6 +57,11 @@ export default {
   },
 
   computed: {},
+  watch: {
+    showInProgress(status) {
+      this.updateMissionsByStatus(status)
+    }
+  },
   async beforeMount() {
     // ### Dynamic Pull based on the userID (uncomment the btm)
     // const userID = localStorage.getItem('userID')
@@ -66,6 +71,16 @@ export default {
     const response = await axios.get('http://127.0.0.1:5201/mission/2')
     this.allMissions = response.data.data.missions
   },
-  methods: {}
+  methods: {
+    async updateMissionsByStatus(status) {
+      if (status == false) {
+        const response = await axios.get('http://127.0.0.1:5201/mission/2')
+        this.allMissions = response.data.data.missions
+      } else {
+        const response = await axios.get('http://127.0.0.1:5201/in_progress_mission/2')
+        this.allMissions = response.data.data.missions
+      }
+    }
+  }
 }
 </script>
