@@ -142,3 +142,17 @@ img {
 .pad-j {
   padding-top: 72px;
 }
+
+.card {
+  border-radius: 16px;
+  background-color: #85A09C;
+  color: #24272B;
+}
+
+.primary-btn {
+  border-radius: 8px;
+  background-color: #EAF0EE;
+}
+.primary-btn:hover {
+  background-color: #39AF70;
+}

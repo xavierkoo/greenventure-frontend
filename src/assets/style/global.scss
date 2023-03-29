@@ -150,3 +150,18 @@ img {
 .pad-j {
     padding-top: 72px;
 }
+
+.card {
+    border-radius: $radiusRegular;
+    background-color: $lightAccent;
+    color: $darkShade;
+}
+
+.primary-btn {
+    border-radius: $radiusSmall;
+    background-color: $lightShade;
+
+    &:hover {
+        background-color: $mainBrand;
+    }
+}
