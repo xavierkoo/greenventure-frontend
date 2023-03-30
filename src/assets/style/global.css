@@ -215,3 +215,17 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.modal .redeemBtn {
+  background-color: #39AF70;
+  border-radius: 16px;
+  color: white;
+}
+.modal .redeemBtnDisabled {
+  border-radius: 16px;
+}
+.modal .closeBtn {
+  background-color: #ca001e;
+  border-radius: 16px;
+  color: white;
+}

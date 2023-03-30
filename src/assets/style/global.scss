@@ -230,3 +230,19 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.modal{
+    .redeemBtn{
+        background-color: $mainBrand;
+        border-radius: $radiusRegular;
+        color:white
+    }
+    .redeemBtnDisabled{
+        border-radius: $radiusRegular;
+    }
+    .closeBtn{
+        background-color: $dangerRed;
+        border-radius: $radiusRegular;
+        color:white;
+    }
+}

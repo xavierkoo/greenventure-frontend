@@ -15,24 +15,22 @@
                     <div :id="'use-' + myvouchers.voucherID" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 id="exampleModalLabel" class="modal-title text-dark">Use Voucher</h5>
-                              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
-                            </div>
                             <div class="modal-body text-dark">
-                                <div v-if="useResult==''">
-                                    Are you sure you want to use the <h6 class="d-inline">{{myvouchers.voucher_code}}</h6> voucher? 
+                                <div v-if="useResult==''" class="text-center">
+                                    Do you want to use the voucher with the code, <div class="d-inline-block fw-bold">{{myvouchers.voucher_code}}</div>?
                                 </div>
-                                <div v-else>
+                                <div v-else class="row">
                                     <div class="text-success text-center">{{useResult}}</div>
-                                    <img class="text-center" src="src/assets/img/qr.png" alt="">
+                                    <div class="col-2"></div>
+                                    <img class="text-center col-8" src="src/assets/img/qr.png" alt="">
+                                    <div class="col-2"></div>
                                 </div>
                             </div>
-                            <div class="modal-footer">
-                              <button type="button" class="light-button" data-bs-dismiss="modal" @click="useResult=''" >Close</button>
-                              <button type="button" class="blue-button" :disabled="useResult!=''"  @click="use(myvouchers.voucher_code,walletdata)" >Use</button>
+                            <div class="modal-footer Row">
+                              <div class="col-1"></div>
+                              <button type="button" class="closeBtn col-4" data-bs-dismiss="modal" @click="reloadpage" >Close</button>
+                              <button type="button" :class="useResult!=''?'redeemBtnDisabled col-4':'redeemBtn col-4'" :disabled="useResult!=''"  @click="use(myvouchers.voucher_code,walletdata)" >Use</button>
+                              <div class="col-1"></div>
                             </div>
                           </div>
                         </div>
@@ -46,7 +44,7 @@
             <h5>Vouchers shop</h5>
             <ol class="list-group list-group-numbered">
                 <li v-for="vouchers in walletdata.available_vouchers" :key="vouchers.voucherID" class="list-group-item d-flex justify-content-between align-items-start" >
-                    <div class="ms-2 me-auto">
+                    <div class=" me-auto">
                     <div class="fw-bold">{{vouchers.voucherCode}}</div>
                     Points required {{ vouchers.pointsRequired }}
                     </div>
@@ -55,23 +53,33 @@
                         <div class="modal-dialog" role="document">
                           <div class="modal-content">
                             <div class="modal-header">
-                              <h5 id="exampleModalLabel" class="modal-title text-dark">{{vouchers.merchantName}}</h5>
-                              <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                              </button>
+                              <h5 id="exampleModalLabel" class="modal-title text-dark fw-bold px-1" :hidden="redemptionResult">Wallet: {{walletdata.points}} Points</h5>
                             </div>
                             <div class="modal-body text-dark">
-                                    <img :src="'src/assets/img/' + vouchers.merchantName + '.png'" >
-                                    <h4>{{vouchers.voucherName}}</h4>
-                                    <h6 class="d-inline-block my-2">Points Required:</h6> {{vouchers.pointsRequired}} <br>
-                                    <h6 class="d-inline-block my-2">Quantity Remaining:</h6> {{vouchers.quantity}} <br>
-                                    <h6 class="mt-2">Terms & Conditions:</h6>{{vouchers.description}}
-                                    <div v-if="walletdata.points<vouchers.pointsRequired?true:false" class="text-danger" >You do not have enough points to redeem this voucher</div>
-                                    <div v-if="redemptionResult" class="text-success">{{redemptionResult}}</div>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="light-button" data-bs-dismiss="modal" @click="redemptionResult=''">Close</button>
-                              <button type="button" class="blue-button"  :disabled="(walletdata.points<vouchers.pointsRequired?true:false)|| redemptionResult!=''" @click="redeem(vouchers)" >Redeem</button>
+                              <div v-if="redemptionResult" class="text-success text-center">{{redemptionResult}}</div>
+                              <div v-else>
+                                <img :src="'src/assets/img/' + vouchers.merchantName + '.png'" >
+                                <h5 class="opacity-50 px-1">{{vouchers.voucherName}}</h5>
+                                <div class="row my-3 px-1">
+                                  <img class="col-2 pe-0" src="src/assets/img/coin.png" alt="">
+                                  <h6 class="col-4 d-inline-block my-auto fw-bold">Cost:</h6>
+                                  <h6 class="col-6 d-inline-block my-auto fw-bold">{{vouchers.pointsRequired}} Points</h6>
+                                </div>
+                                <div class="row my-3 px-1">
+                                  <img class="col-2 pe-0" src="src/assets/img/voucher.png" alt="">
+                                  <h6 class="col-4 d-inline-block my-auto fw-bold">QTY:</h6>
+                                  <h6 class="col-6 d-inline-block my-auto fw-bold">{{vouchers.quantity}} Left</h6>
+                                </div>
+                                <h6 class="mt-3 fw-bold px-1">Terms & Conditions:</h6>
+                                <div class="mt-1 px-1">{{vouchers.description}}</div>
+                              </div>
+                              </div>
+                            <div class="modal-footer row">
+                              <div v-if="walletdata.points<vouchers.pointsRequired?true:false" class="text-danger text-center my-2" >You do not have enough points to redeem this voucher</div> 
+                                <div class="col-1"></div>
+                                <button type="button" class="closeBtn col-4" data-bs-dismiss="modal" @click="reloadpage">Close</button>
+                                <button type="button" :class="walletdata.points<vouchers.pointsRequired || redemptionResult!=''?'redeemBtnDisabled col-4':'redeemBtn col-4'"  :disabled="(walletdata.points<vouchers.pointsRequired?true:false)|| redemptionResult!=''" @click="redeem(vouchers)" >Redeem</button>
+                                <div class="col-1"></div>
                             </div>
                           </div>
                         </div>
@@ -91,8 +99,8 @@
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
 
-const redemptionResult = ref('')
-const useResult = ref('')
+let redemptionResult = ref('')
+let useResult = ref('')
 const walletdata = ref([]);
 
 // const state = reactive({
@@ -103,12 +111,12 @@ const walletdata = ref([]);
 
 
 const state ={
-    "id" : "1"
+    "id" : "162804203307686"
 }
 
 function redeem(vouchers) {
-    axios.post('http://127.0.0.1:5204/redeemVoucher', {
-        "user_ID": 1,
+    axios.post('http://localhost:5204/redeemVoucher', {
+        "user_ID": "162804203307686",
         "voucherID": vouchers.voucherID,
         "voucher_code": vouchers.voucherCode,
         "voucher_amount": vouchers.pointsRequired,
@@ -124,7 +132,7 @@ function redeem(vouchers) {
   }
 
   function use(myvouchers,walletdata) {
-    axios.post('http://127.0.0.1:5205/useVoucher', {
+    axios.post('http://localhost:5205/useVoucher', {
         "walletID": walletdata.user_vouchers[0].voucherID.toString(),
         "voucher_code": myvouchers,
         "email": "ray.quek@gmail.com"
@@ -138,10 +146,16 @@ function redeem(vouchers) {
 
   }
 
+  function reloadpage(){
+      location.reload();
+      redemptionResult.value='';
+      useResult.value='';
+  }
+
 
 const postData = async () => {
   try {
-    const response = await axios.post('http://127.0.0.1:5203/get_wallet_details', state);
+    const response = await axios.post('http://localhost:5203/get_wallet_details', state);
     walletdata.value = response.data
     // handle the response if needed
   } catch (error) {
