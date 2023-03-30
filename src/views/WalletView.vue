@@ -141,7 +141,7 @@ function redeem(vouchers) {
 
 const postData = async () => {
   try {
-    const response = await axios.post('http://127.0.0.1:5107/get_wallet_details', state);
+    const response = await axios.post('http://127.0.0.1:5203/get_wallet_details', state);
     walletdata.value = response.data
     // handle the response if needed
   } catch (error) {
