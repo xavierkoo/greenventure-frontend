@@ -46,14 +46,15 @@ export default {
     axios
       .post('http://127.0.0.1:5208/', params)
       .then((res) => {
-        console.log(res)
-        console.log('Means i need to redirect liao! ')
+        if (res.data[1] == '201') {
+          this.loadIntoSession()
+        }
       })
       .catch((err) => {
         console.error(err)
+        alert('There seems to be some problem! Try logging in again!')
         console.log('Means i got to go debug ')
       })
-    this.loadIntoSession()
   },
   methods: {
     loadIntoSession() {

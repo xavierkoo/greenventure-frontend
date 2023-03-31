@@ -36,35 +36,14 @@
 </template>
 
 <script>
-import { useRoute } from 'vue-router'
-
 export default {
   data() {
     return {
       code: ''
     }
   },
-  beforeMount() {
-    const route = useRoute()
-    this.code = route.query.token
-    // this.loadIntoSession()
-  },
-  methods: {
-    // async loadIntoSession() {
-    //   await axios
-    //     .get(`http://127.0.0.1:5100/user/${this.code}`)
-    //     .then((res) => {
-    //       localStorage.setItem('accessToken', res.data.data.accessToken)
-    //       localStorage.setItem('email', res.data.data.email)
-    //       localStorage.setItem('name', res.data.data.name)
-    //       localStorage.setItem('userID', res.data.data.userID)
-    //       this.$router.replace({ path: '/' })
-    //     })
-    //     .catch((err) => {
-    //       console.error(err)
-    //     })
-    // }
-  }
+  beforeMount() {},
+  methods: {}
 }
 </script>
 

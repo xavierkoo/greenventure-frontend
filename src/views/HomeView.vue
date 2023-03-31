@@ -100,6 +100,7 @@ export default {
         userid: this.userID,
         verification_code: inputVal
       }
+      console.log(params)
       const response = await axios
         .post('http://localhost:5201/complete_mission', params)
         .then(() => {
