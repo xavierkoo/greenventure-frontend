@@ -214,20 +214,21 @@ const walletdata = ref([])
 //   },
 // });
 
-const userID = ref(localStorage.getItem('userID'))
+const userID = localStorage.getItem('userID')
+const email = localStorage.getItem('email')
 
 const state = {
-  id: userID.value
+  id: userID
 }
 
 function redeem(vouchers) {
   axios
     .post('http://localhost:5204/redeemVoucher', {
-      user_ID: userID.value,
+      user_ID: userID,
       voucherID: vouchers.voucherID,
       voucher_code: vouchers.voucherCode,
       voucher_amount: vouchers.pointsRequired,
-      email: 'ray.quek@gmail.com'
+      email: email
     })
     .then(function (response) {
       redemptionResult.value = response.data.data.returnMessage
@@ -238,12 +239,13 @@ function redeem(vouchers) {
 }
 
 function use(myvouchers, walletdata) {
-  let wal = parseInt(walletdata.user_vouchers[0].voucherID)
+  let wal = walletdata.walletID
+  console.log(wal)
   axios
     .post('http://localhost:5205/useVoucher', {
       walletID: wal,
       voucher_code: myvouchers,
-      email: 'ray.quek@gmail.com'
+      email: email
     })
     .then(function (response) {
       useResult.value = response.data.data.returnMessage
@@ -263,8 +265,8 @@ const postData = async () => {
   try {
     const response = await axios.post('http://localhost:5203/get_wallet_details', state)
 
-    console.log(state)
     walletdata.value = response.data
+    console.log(walletdata.value)
     // handle the response if needed
   } catch (error) {
     // handle the error if needed
