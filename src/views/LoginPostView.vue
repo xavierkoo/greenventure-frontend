@@ -42,6 +42,17 @@ export default {
     this.aid = route.query.aId
     this.name = route.query.name
     this.email = route.query.email
+    const params = { aId: this.aid, name: this.name, email: this.email }
+    axios
+      .post('http://127.0.0.1:5208/', params)
+      .then((res) => {
+        console.log(res)
+        console.log('Means i need to redirect liao! ')
+      })
+      .catch((err) => {
+        console.error(err)
+        console.log('Means i got to go debug ')
+      })
     this.loadIntoSession()
   },
   methods: {
