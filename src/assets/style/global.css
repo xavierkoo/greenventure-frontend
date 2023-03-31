@@ -216,16 +216,19 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-.modal .redeemBtn {
+.wallet .redeemBtn {
   background-color: #39AF70;
-  border-radius: 16px;
+  border-radius: 8px;
   color: white;
 }
-.modal .redeemBtnDisabled {
-  border-radius: 16px;
+.wallet .redeemBtnDisabled {
+  border-radius: 8px;
 }
-.modal .closeBtn {
+.wallet .closeBtn {
   background-color: #ca001e;
-  border-radius: 16px;
+  border-radius: 8px;
   color: white;
 }
+.wallet .use {
+  border-radius: 8px;
+}/*# sourceMappingURL=global.css.map */
