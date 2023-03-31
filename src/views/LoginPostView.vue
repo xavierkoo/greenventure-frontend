@@ -5,7 +5,7 @@
       <div class="row gx-lg-5 align-items-center mb-5">
         <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
           <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            The best<br />
+            The login was<br />
             <span style="color: hsl(218, 81%, 75%)">has yet to be</span>
           </h1>
           <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
@@ -17,17 +17,6 @@
         <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
           <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
           <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-          <div class="card bg-glass">
-            <div class="card-body px-4 py-5 px-md-5">
-              <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <button class="btn btn-primary facebook">
-                  <span>Login with Facebook</span><a href="http://127.0.0.1:5100/login">Test</a>
-                  <i class="fa fa-facebook"></i>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
@@ -42,28 +31,25 @@ import axios from 'axios'
 export default {
   data() {
     return {
-      code: ''
+      code: '',
+      name: '',
+      aid: '',
+      email: ''
     }
   },
   beforeMount() {
     const route = useRoute()
-    this.code = route.query.token
+    this.aid = route.query.aId
+    this.name = route.query.name
+    this.email = route.query.email
     this.loadIntoSession()
   },
   methods: {
-    async loadIntoSession() {
-      await axios
-        .get(`http://127.0.0.1:5100/user/${this.code}`)
-        .then((res) => {
-          localStorage.setItem('accessToken', res.data.data.accessToken)
-          localStorage.setItem('email', res.data.data.email)
-          localStorage.setItem('name', res.data.data.name)
-          localStorage.setItem('userID', res.data.data.userID)
-          this.$router.replace({ path: '/' })
-        })
-        .catch((err) => {
-          console.error(err)
-        })
+    loadIntoSession() {
+      localStorage.setItem('userID', this.aid)
+      localStorage.setItem('name', this.name)
+      localStorage.setItem('email', this.email)
+      this.$router.replace({ path: '/' })
     }
   }
 }
