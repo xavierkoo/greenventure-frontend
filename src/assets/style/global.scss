@@ -247,6 +247,11 @@ input:checked+.slider:before {
     }
     .use{
         border-radius: $radiusSmall;
-        height: 50px;
     }
+    .modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -30%);
+      }
 }
