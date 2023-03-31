@@ -58,7 +58,7 @@
 import axios from 'axios'
 export default {
   data() {
-    return { allMissions: '', showInProgress: false }
+    return { allMissions: '', showInProgress: false, userID: '' }
   },
 
   computed: {},
@@ -73,29 +73,35 @@ export default {
     // const response = await axios.get('http://127.0.0.1:5201/mission/{userID}')
 
     // ### Testing Code
-    const response = await axios.get('http://127.0.0.1:5201/mission/2')
+    this.userID = localStorage.getItem('userID')
+    console.log(this.userID)
+    console.log(typeof this.userID)
+
+    const response = await axios.get('http://localhost:5201/mission/' + this.userID)
     this.allMissions = response.data.data.missions
   },
   methods: {
     async updateMissionsByStatus(status) {
       if (status == false) {
-        const response = await axios.get('http://127.0.0.1:5201/mission/2')
+        const response = await axios.get('http://localhost:5201/mission/' + this.userID)
         this.allMissions = response.data.data.missions
       } else {
-        const response = await axios.get('http://127.0.0.1:5201/in_progress_mission/2')
+        const response = await axios.get('http://localhost:5201/in_progress_mission/' + this.userID)
+        console.log(response.data)
         this.allMissions = response.data.data.missions
       }
     },
     async handleSubmit(missionID) {
       // const userID = localStorage.getItem('userID')
       const inputVal = document.getElementById(missionID).value
+      console.log(inputVal)
       const params = {
-        missionID: inputVal,
-        userID: 2,
-        verification_code: '528819'
+        missionid: missionID,
+        userid: this.userID,
+        verification_code: inputVal
       }
       const response = await axios
-        .post('http://127.0.0.1:5201/complete_mission', params)
+        .post('http://localhost:5201/complete_mission', params)
         .then(() => {
           console.log('This is completed!')
         })
@@ -103,16 +109,16 @@ export default {
           console.error(err)
         })
 
-      this.allMissions = response.data.data.missions
+      // this.allMissions = response.data.data.missions
     },
     async acceptMission(missionID) {
       // const userID = localStorage.getItem('userID')
       const params = {
-        missionID: missionID,
-        userID: 2
+        missionid: missionID,
+        userid: this.userID
       }
       const response = await axios
-        .post('http://127.0.0.1:5201/accept_mission', params)
+        .post('http://localhost:5201/accept_mission', params)
         .then(() => {
           console.log('This is completed!')
         })
