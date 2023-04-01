@@ -68,60 +68,70 @@ export default {
     }
   },
   async beforeMount() {
-    // ### Dynamic Pull based on the userID (uncomment the btm)
-    // const userID = localStorage.getItem('userID')
-    // const response = await axios.get('http://127.0.0.1:5201/mission/{userID}')
-
-    // ### Testing Code
+    // Get userId from localStorage
     this.userID = localStorage.getItem('userID')
-    console.log(this.userID)
-    console.log(typeof this.userID)
 
-    const response = await axios.get('http://localhost:5201/mission/' + this.userID)
-    this.allMissions = response.data.data.missions
+    // Populate the home screen with missions that the user can accept
+    await axios
+      .get('http://localhost:5201/mission/' + this.userID)
+      .then((res) => {
+        this.allMissions = res.data.data.missions
+      })
+      .catch(() => {
+        alert('There is no more missions available at the moment')
+        this.showInProgress = true
+      })
   },
   methods: {
     async updateMissionsByStatus(status) {
+      // Depending on the status, it will get the populate the homescreen with either the mission (available or inprogress)
       if (status == false) {
-        const response = await axios.get('http://localhost:5201/mission/' + this.userID)
-        this.allMissions = response.data.data.missions
+        await axios
+          .get('http://localhost:5201/mission/' + this.userID)
+          .then((res) => {
+            this.allMissions = res.data.data.missions
+          })
+          .catch(() => {
+            alert('There is no more missions available at the moment')
+            this.showInProgress = true
+          })
       } else {
         const response = await axios.get('http://localhost:5201/in_progress_mission/' + this.userID)
         console.log(response.data)
         this.allMissions = response.data.data.missions
       }
     },
+
     async handleSubmit(missionID) {
-      // const userID = localStorage.getItem('userID')
+      // Handle the submission of the mission verification code to the backend based on the mission
       const inputVal = document.getElementById(missionID).value
-      console.log(inputVal)
       const params = {
         missionid: missionID,
         userid: this.userID,
         verification_code: inputVal
       }
-      console.log(params)
-      const response = await axios
-        .post('http://localhost:5201/complete_mission', params)
-        .then(() => {
-          console.log('This is completed!')
-        })
-        .catch((err) => {
-          console.error(err)
-        })
 
-      // this.allMissions = response.data.data.missions
+      await axios.post('http://localhost:5201/complete_mission', params).catch(() => {
+        alert('There seems to be an error that has occurred with the submission. Try again :)')
+      })
+
+      this.showInProgress = false
     },
+
     async acceptMission(missionID) {
-      // const userID = localStorage.getItem('userID')
       const params = {
         missionid: missionID,
         userid: this.userID
       }
-      const response = await axios
+      await axios
         .post('http://localhost:5201/accept_mission', params)
         .then(() => {
-          console.log('This is completed!')
+          // Updates the local state by loop thru and removing the mission id that is the same
+          for (const iterator in this.allMissions) {
+            if (this.allMissions[iterator].missionID == missionID) {
+              this.allMissions.splice(iterator, 1)
+            }
+          }
         })
         .catch((err) => {
           console.error(err)
