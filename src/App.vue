@@ -16,7 +16,7 @@ import TopNav from './components/TopNav.vue'
   </header>
 
   <!-- * Body Grid -->
-  <div class="row g-2 px-0">
+  <div class="row g-2 px-0 background-radial-gradient">
     <div class="d-none d-sm-block col-sm-1 col-xxl-1" style="background-color: #142442" />
     <div class="col col-sm col-lg col-xl col-xxl" style="min-height: 100vh">
       <TopNav />

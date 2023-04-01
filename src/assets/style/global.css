@@ -231,4 +231,15 @@ input:checked + .slider:before {
 }
 .wallet .use {
   border-radius: 8px;
-}/*# sourceMappingURL=global.css.map */
+}
+.wallet .modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+}
+
+.background-radial-gradient {
+  background-color: hsl(218, 41%, 15%);
+  background-image: radial-gradient(1000px circle at 0% 0%, hsl(158, 41%, 35%) 15%, hsl(158, 41%, 30%) 25%, hsl(158, 41%, 20%) 75%, hsl(158, 41%, 19%) 80%, transparent 100%), radial-gradient(1250px circle at 100% 100%, hsl(158, 41%, 45%) 15%, hsl(158, 41%, 30%) 35%, hsl(158, 41%, 20%) 75%, hsl(158, 41%, 19%) 80%, transparent 100%);
+}
