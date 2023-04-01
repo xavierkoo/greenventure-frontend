@@ -1,29 +1,21 @@
 <template>
   <!-- Section: Design Block -->
-  <section class="background-radial-gradient overflow-hidden">
+  <section class="background-radial-gradient overflow-hidden" style="height: 100vh">
     <div class="container px-4 py-5 px-md-5 text-center text-lg-start my-5">
       <div class="row gx-lg-5 align-items-center mb-5">
-        <div class="col-lg-6 mb-5 mb-lg-0" style="z-index: 10">
-          <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%)">
-            The best<br />
-            <span style="color: hsl(218, 81%, 75%)">has yet to be</span>
-          </h1>
-          <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%)">
-            Save these furry friends from extinction. Complete daily tasks, protect the endangered
-            species, and promote a sustainable future.
-          </p>
-        </div>
-
         <div class="col-lg-6 mb-5 mb-lg-0 position-relative">
-          <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
-          <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
-
-          <div class="card bg-glass">
+          <div class="card bg-glass" style="color: black">
             <div class="card-body px-4 py-5 px-md-5">
+              <h1 class="my-5 display-5 fw-bold ls-tight" style="">
+                The best<br />
+                has yet to be
+              </h1>
+              <p class="mb-4 opacity-70" style="">
+                Save the earth by starting small with our sustainable recycling app!
+              </p>
               <div class="col-lg-6 col-md-6 col-xs-12 col-sm-6">
-                <button class="btn btn-primary facebook">
-                  <span>Login with Facebook</span><a href="http://127.0.0.1:5207/login">Test</a>
-                  <i class="fa fa-facebook"></i>
+                <button class="btn btn-primary">
+                  <a style="color: white" href="http://127.0.0.1:5207/login">Login with Facebook</a>
                 </button>
               </div>
             </div>
@@ -32,20 +24,7 @@
       </div>
     </div>
   </section>
-  <!-- Section: Design Block -->
 </template>
-
-<script>
-export default {
-  data() {
-    return {
-      code: ''
-    }
-  },
-  beforeMount() {},
-  methods: {}
-}
-</script>
 
 <style scoped>
 .background-radial-gradient {
@@ -67,26 +46,6 @@ export default {
       transparent 100%
     );
 }
-
-#radius-shape-1 {
-  height: 220px;
-  width: 220px;
-  top: -60px;
-  left: -130px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
-}
-
-#radius-shape-2 {
-  border-radius: 38% 62% 63% 37% / 70% 33% 67% 30%;
-  bottom: -60px;
-  right: -110px;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(#44006b, #ad1fff);
-  overflow: hidden;
-}
-
 .bg-glass {
   background-color: hsla(0, 0%, 100%, 0.9) !important;
   backdrop-filter: saturate(200%) blur(25px);

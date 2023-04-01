@@ -231,27 +231,31 @@ input:checked+.slider:before {
     border-radius: 50%;
 }
 
-.wallet{
-    .redeemBtn{
+.wallet {
+    .redeemBtn {
         background-color: $mainBrand;
         border-radius: $radiusSmall;
-        color:white
+        color: white
     }
-    .redeemBtnDisabled{
+
+    .redeemBtnDisabled {
         border-radius: $radiusSmall;
     }
-    .closeBtn{
+
+    .closeBtn {
         background-color: $dangerRed;
         border-radius: $radiusSmall;
-        color:white;
+        color: white;
     }
-    .use{
+
+    .use {
         border-radius: $radiusSmall;
     }
+
     .modal {
         position: fixed;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -30%);
-      }
+    }
 }
