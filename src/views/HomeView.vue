@@ -38,9 +38,23 @@
               />
               <div class="card-body">
                 <h4 class="card-title">
-                  <h5>{{ item.missionID }}</h5>
+                  <h5>Mission {{ item.missionID }}</h5>
+
+                  <!-- START OF display to-do if is available missions -->
+                  <h6 v-if="showInProgress == false">To-do: <mark>Recycle {{ item.required_count }} {{ item.mission_category }}</mark></h6>
+                  <!-- END OF display to-do if is available missions -->
+
+                  <!-- START OF display progress if is in-progress missions -->
+                  <div v-else>
+                    <div style="font-size: small;">Progress: </div>
+                    <div class="progress">
+                      <div class="progress-bar" role="progressbar" :style="{ width: (item.completed_count*100/item.required_count) + '%' }" aria-valuemin="0" aria-valuemax="100">{{ item.completed_count }} / {{ item.required_count }}</div>
+                    </div>
+                  </div>
+                   <!-- END OF display progress if is in-progress missions -->
+
                 </h4>
-                <p class="card-text">{{ item.description }}</p>
+                <p style="font-size: small;" class="card-text">About: {{ item.description }}</p>
                 <div v-if="showInProgress == false" class="text-end">
                   <button
                     type="button"
@@ -51,6 +65,7 @@
                   </button>
                 </div>
                 <div v-else class="">
+                  CODE:
                   <form @submit.prevent="handleSubmit(item.missionID)">
                     <div class="row justify-content-center align-items-center g-0">
                       <div class="col-12 col-md-8">
