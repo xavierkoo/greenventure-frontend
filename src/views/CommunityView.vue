@@ -64,7 +64,6 @@ const router = useRouter()
 
 function seePost(postData){
     // console.log(postData)
-    console.log(JSON.stringify(postData))
     router.push({name:'postactivity', query: { data : JSON.stringify(postData) }})
 }
 

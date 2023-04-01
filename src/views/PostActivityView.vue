@@ -64,18 +64,18 @@ const postData = computed(()=>{
 function postcomment(){
     console.log(typeof(userID))
     const commentData = {  
+        post_id : postData.value.postID,
         action_user : userID,
-        action_username : username,
+        name : username,
         activity : "comment",
         comment : comment.value
     }
     
     axios
-    .post('http://localhost:5104/post/' + postData.value.postID, commentData)
+    .post('http://localhost:5206/', commentData)
     .then(function (response) {
         comments.value.push(response.data.data)
         comment.value = ''
-        console.log(response)
     })
     .catch(function (error) {
         console.log(error)
@@ -106,7 +106,6 @@ const getPostData = async () => {
 
     comments.value = postactivity.value.filter(item => item.activity == 'comment')
 
-    console.log(postactivity.value )
     // handle the response if needed
   } catch (error) {
     // handle the error if needed
@@ -114,14 +113,14 @@ const getPostData = async () => {
 }
 
 function likepost(){
-    console.log(typeof(userID))
     
     axios
-    .post('http://localhost:5104/post/' + postData.value.postID, {
-      action_user : userID,
-      action_username : username,
-      activity : "like",
-      comment : null
+    .post('http://localhost:5206/', {
+        post_id : postData.value.postID,
+        action_user : userID,
+        name : username,
+        activity : "like",
+        comment : null
     })
     .then(function (response) {
         isLike.value = true
