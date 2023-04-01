@@ -23,6 +23,17 @@ const router = createRouter({
       path: '/wallet',
       name: 'wallet',
       component: () => import('../views/WalletView.vue')
+    },
+    {
+      path: '/community',
+      name: 'community',
+      component: () => import('../views/CommunityView.vue')
+    },
+    {
+      path: '/postactivity',
+      name: 'postactivity',
+      component: () => import('../views/PostActivityView.vue'),
+      props: route => ({ data: route.query.data }),
     }
   ]
 })
