@@ -29,7 +29,7 @@
                 <a class="nav-link" href="#">Vouchers/ Points</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Leaderboard</a>
+                <a class="nav-link" href="localhost:3000">Leaderboard</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Log out</a>
