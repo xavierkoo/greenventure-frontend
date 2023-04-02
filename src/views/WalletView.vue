@@ -1,10 +1,12 @@
 <template>
-  <div class="h-100 container wallet">
-    <h4 class="my-3">
+  <div class="container wallet">
+    <h4 class="my-3 text-light">
       Wallet : {{ walletdata.points }} <img src="../assets/img/coin.png" height="20" alt="" />
     </h4>
 
-    <h5>My Vouchers <img src="../assets/img/voucher.png" height="30" alt="" /></h5>
+    <h5 class="text-light">
+      My Vouchers <img src="../assets/img/voucher.png" height="30" alt="" />
+    </h5>
     <div class="row">
       <div
         v-for="myvouchers in walletdata.user_vouchers"
@@ -85,7 +87,9 @@
     </div>
 
     <div class="row">
-      <h5 class="my-3">Vouchers shop <img src="../assets/img/deal.png" height="30" alt="" /></h5>
+      <h5 class="my-3 text-light">
+        Vouchers shop <img src="../assets/img/deal.png" height="30" alt="" />
+      </h5>
       <div
         v-for="vouchers in walletdata.available_vouchers"
         :key="vouchers.voucherID"
