@@ -1,10 +1,10 @@
 <template>
   <div class="h-100 container wallet">
     <h4 class="my-3">
-      Wallet : {{ walletdata.points }} <img src="src/assets/img/coin.png" height="20" alt="" />
+      Wallet : {{ walletdata.points }} <img src="../assets/img/coin.png" height="20" alt="" />
     </h4>
 
-    <h5>My Vouchers <img src="src/assets/img/voucher.png" height="30" alt="" /></h5>
+    <h5>My Vouchers <img src="../assets/img/voucher.png" height="30" alt="" /></h5>
     <div class="row">
       <div
         v-for="myvouchers in walletdata.user_vouchers"
@@ -49,7 +49,7 @@
                     <div v-else class="row">
                       <div class="text-success text-center">{{ useResult }}</div>
                       <div class="col-2"></div>
-                      <img class="text-center col-8" src="src/assets/img/qr.png" alt="" />
+                      <img class="text-center col-8" src="../assets/img/qr.png" alt="" />
                       <div class="col-2"></div>
                     </div>
                   </div>
@@ -85,7 +85,7 @@
     </div>
 
     <div class="row">
-      <h5 class="my-3">Vouchers shop <img src="src/assets/img/deal.png" height="30" alt="" /></h5>
+      <h5 class="my-3">Vouchers shop <img src="../assets/img/deal.png" height="30" alt="" /></h5>
       <div
         v-for="vouchers in walletdata.available_vouchers"
         :key="vouchers.voucherID"
@@ -134,17 +134,17 @@
                       {{ redemptionResult }}
                     </div>
                     <div v-else>
-                      <img :src="'src/assets/img/' + vouchers.merchantName + '.png'" />
+                      <img :src="'../assets/img/' + vouchers.merchantName + '.png'" />
                       <h5 class="opacity-50 px-1">{{ vouchers.voucherName }}</h5>
                       <div class="row my-3 px-1">
-                        <img class="col-2 pe-0" src="src/assets/img/coin.png" alt="" />
+                        <img class="col-2 pe-0" src="../assets/img/coin.png" alt="" />
                         <h6 class="col-4 d-inline-block my-auto fw-bold">Cost:</h6>
                         <h6 class="col-6 d-inline-block my-auto fw-bold">
                           {{ vouchers.pointsRequired }} Points
                         </h6>
                       </div>
                       <div class="row my-3 px-1">
-                        <img class="col-2 pe-0" src="src/assets/img/voucher.png" alt="" />
+                        <img class="col-2 pe-0" src="../assets/img/voucher.png" alt="" />
                         <h6 class="col-4 d-inline-block my-auto fw-bold">QTY:</h6>
                         <h6 class="col-6 d-inline-block my-auto fw-bold">
                           {{ vouchers.quantity }} Left
@@ -274,7 +274,7 @@ const postData = async () => {
 }
 
 function getVoucherCodeWithoutNumbers(voucherCode) {
-  return 'src/assets/img/' + voucherCode.replace(/\d/g, '') + '.png'
+  return '../assets/img/' + voucherCode.replace(/\d/g, '') + '.png'
 }
 
 onMounted(() => {
