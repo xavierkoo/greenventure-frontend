@@ -23,10 +23,10 @@
           <div id="navbarNav" class="collapse navbar-collapse">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="http://localhost:5173">Home</a>
+                <router-link class="nav-link active" to="/">Home</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:5173/wallet">Vouchers/ Points</a>
+                <router-link class="nav-link" to="/wallet">Vouchers/ Points</router-link>
               </li>
               <li class="nav-item">
                 <a class="nav-link" :href="'http://localhost:3000/leaderboards/' + getUserID()"
@@ -34,10 +34,11 @@
                 >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:5173/community">Community</a>
+                <router-link class="nav-link" to="/community">Community</router-link>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="http://localhost:5173/login" @click="logout()">Log out</a>
+                <router-link class="nav-link" to="/login">Community</router-link>
+                <router-link to="/login" class="nav-link" @click="logout()">Log out</router-link>
               </li>
             </ul>
           </div>
