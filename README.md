@@ -1,35 +1,27 @@
 # greenventure-frontend
 
-This template should help get you started developing with Vue 3 in Vite.
+This are the steps to get greenventure-frontend started.
 
-## Recommended IDE Setup
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+## Tech Stack
+* Framework: Vue.js
+* Style: Bootstrap, sass
 
 ## Project Setup
-
-```sh
-npm install
+Clone greenventure-frontend:
+```bash
+$ git clone git@github.com:GreenVenture/greenventure-frontend.git
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
+Open your terminal in the local project root folder, and execute:
+```bash
+$ npm install
 ```
 
-### Compile and Minify for Production
-
-```sh
-npm run build
+Run the application
+```bash
+$ npm run dev
 ```
 
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
-```
+Application will run by default on port `5173` <br>
+Alternative Deployed FrontEnd Netlify Link: https://main--greenventure.netlify.app/ <br>
