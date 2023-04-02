@@ -274,7 +274,7 @@ const postData = async () => {
 }
 
 function getVoucherCodeWithoutNumbers(voucherCode) {
-  return '../assets/img/' + voucherCode.replace(/\d/g, '') + '.png'
+  return 'src/assets/img/' + voucherCode.replace(/\d/g, '') + '.png'
 }
 
 onMounted(() => {
