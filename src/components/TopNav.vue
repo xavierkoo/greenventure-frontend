@@ -36,9 +36,6 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/community">Community</router-link>
               </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/login">Community</router-link>
-              </li>
               <li>
                 <router-link to="/login" class="nav-link" @click="logout()">Log out</router-link>
               </li>
