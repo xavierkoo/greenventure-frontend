@@ -23,16 +23,21 @@
           <div id="navbarNav" class="collapse navbar-collapse">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link active" href="http://localhost:5173">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Vouchers/ Points</a>
+                <a class="nav-link" href="http://localhost:5173/wallet">Vouchers/ Points</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="localhost:3000">Leaderboard</a>
+                <a class="nav-link" :href="'http://localhost:3000/leaderboards/' + getUserID()"
+                  >Leaderboard</a
+                >
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Log out</a>
+                <a class="nav-link" href="http://localhost:5173/community">Community</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="http://localhost:5173/login" @click="logout()">Log out</a>
               </li>
             </ul>
           </div>
@@ -44,6 +49,15 @@
 
 <script setup>
 // Script Portion
+
+function logout() {
+  localStorage.clear()
+}
+function getUserID() {
+  return localStorage.getItem('userID')
+}
+
+// const isLoggedin = localStorage.getItem('userID')
 </script>
 
 <style lang="scss" scoped></style>
