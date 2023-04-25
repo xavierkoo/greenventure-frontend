@@ -7,7 +7,7 @@ Inspired by the Healthy 365 app launched by the Health Promotion Board (HPB), Gr
 
 ## Tech Stack
 * Framework: Vue.js
-* Style: Bootstrap, sass
+* Style: Bootstrap, Sass
 
 ## Project Setup
 Clone greenventure-frontend:
@@ -26,4 +26,3 @@ $ npm run dev
 ```
 
 Application will run by default on port `5173` <br>
-Alternative Deployed FrontEnd Netlify Link: https://main--greenventure.netlify.app/ <br>
