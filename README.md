@@ -4,6 +4,7 @@
 Inspired by the Healthy 365 app launched by the Health Promotion Board (HPB), GreenVenture is an application that rewards users for recyling a non-contaminated recyclable. Like the Healthy 365 app where users are allowed to scan a QRCode to gain points after purchasing a healthier choice product, this approach towards recycling not only incentives users to come ahead to recycle, but also provide instant feedback to users on whether their item is valid recyclable. 
 </p>
 
+This is the frontend repository for GreenVenture, the backend repository can be found [here](https://github.com/xavierkoo/greenventure-main).
 
 ## Tech Stack
 * Framework: Vue.js
