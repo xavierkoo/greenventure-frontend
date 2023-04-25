@@ -13,7 +13,7 @@ This is the frontend repository for GreenVenture, the backend repository can be 
 ## Project Setup
 Clone greenventure-frontend:
 ```bash
-$ git clone git@github.com:GreenVenture/greenventure-frontend.git
+$ git clone git@github.com:xavierkoo/greenventure-frontend.git
 ```
 
 Open your terminal in the local project root folder, and execute:
